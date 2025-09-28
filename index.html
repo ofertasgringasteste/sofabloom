@@ -1200,10 +1200,6 @@ Disponível nas cores: Preto, Off-White, Roxo, Vermelho Bordô e Verde. Expansã
                 }, 3000);
             }
 
-            // Função para obter parâmetros da URL atual
-            function getCurrentUrlParams() {
-                return window.location.search;
-            }
 
             // Função para redirecionar para checkout
             function redirectToCheckout() {
@@ -1212,18 +1208,8 @@ Disponível nas cores: Preto, Off-White, Roxo, Vermelho Bordô e Verde. Expansã
                     document.getElementById('size-warning').textContent = 'Selecione uma cor antes de prosseguir';
                     return;
                 }
-                // Tamanho não é mais necessário
-                const selectedSize = 'único';
-                const selectedColors = getSelectedColors();
-                const currentParams = getCurrentUrlParams();
-                const separator = currentParams ? '&' : '?';
-                
-                let urlParams = `${separator}size=${selectedSize}`;
-                selectedColors.forEach((colorData, index) => {
-                    urlParams += `&color${index + 1}=${colorData.color}`;
-                });
-                
-                window.location.href = 'https://checkout.vendeagora.com/api/public/shopify?product=716631484319&store=7166' + currentParams + urlParams;
+                // Redirecionamento direto para checkout sem parâmetros adicionais
+                window.location.href = 'https://checkout.vendeagora.com/api/public/shopify?product=716631484319&store=7166';
             }
 
             // Adiciona redirecionamento aos botões
